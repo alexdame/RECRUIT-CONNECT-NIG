@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Global Talent Connect - Recruitment Solutions</title>
+    <!-- Tailwind CSS via CDN for easy styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Lucide Icons via CDN for modern, clean icons -->
+    <script src="https://cdn.jsdelivr.net/npm/lucide-preact@latest"></script>
+    <style>
+        @import url('https://rsms.me/inter/inter.css');
+        html { font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
+        body { margin: 0; padding: 0; box-sizing: border-box; }
+        * { box-sizing: border-box; }
+
+        /* Custom hero section with a subtle gradient and background image */
+        .hero-section {
+            background-image: linear-gradient(to bottom, rgba(17, 24, 39, 0.95), rgba(31, 41, 55, 0.95)), url('https://images.unsplash.com/photo-1542744095-291d17fab7e0?q=80&w=2940&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 8rem 2rem;
+            min-height: 80vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+        
+        /* Card hover effect for services and testimonials */
+        .card-hover-effect {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card-hover-effect:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .list-item-hover-effect {
+            transition: transform 0.3s ease, color 0.3s ease;
+        }
+        .list-item-hover-effect:hover {
+            transform: translateX(5px);
+            color: #2563eb; /* A darker, more professional blue */
+        }
+
+        /* Simple animation for fade-in effect on scroll */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .fade-in.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body class="bg-gray-100 text-gray-800 antialiased">
+
+    <!-- Navigation Bar -->
+    <nav class="sticky top-0 z-20 bg-white shadow-md rounded-b-xl py-4 px-4 md:px-8">
+        <div class="container mx-auto flex justify-between items-center">
+            <!-- Logo and brand name -->
+            <a href="#" class="text-2xl font-bold text-gray-900">
+                Global Talent <span class="text-blue-600">Connect</span>
+            </a>
+            
+            <!-- Desktop navigation links -->
+            <div class="hidden md:flex space-x-6 lg:space-x-8 items-center">
+                <a href="#services" class="text-gray-600 hover:text-blue-600 transition-colors duration-300 font-medium">Services</a>
+                <a href="#process" class="text-gray-600 hover:text-blue-600 transition-colors duration-300 font-medium">Our Process</a>
+                <a href="#testimonials" class="text-gray-600 hover:text-blue-600 transition-colors duration-300 font-medium">Testimonials</a>
+                <a href="#contact" class="text-white bg-blue-600 py-2 px-5 rounded-full hover:bg-blue-700 transition-colors duration-300 shadow-md">Contact Us</a>
+            </div>
+
+            <!-- Mobile menu button -->
+            <div class="md:hidden">
+                <button id="mobile-menu-toggle" class="text-gray-600 hover:text-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-600 rounded" aria-label="Toggle mobile menu">
+                    <i data-lucide="menu" class="w-8 h-8" id="menu-icon"></i>
+                    <i data-lucide="x" class="w-8 h-8 hidden" id="close-icon"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile menu dropdown -->
+        <div id="mobile-menu" class="md:hidden hidden mt-4 bg-white rounded-xl shadow-lg p-4">
+            <a href="#services" class="block py-2 px-4 text-gray-800 hover:bg-gray-100 rounded-lg transition-colors duration-300 font-medium" onclick="toggleMobileMenu()">Services</a>
+            <a href="#process" class="block py-2 px-4 text-gray-800 hover:bg-gray-100 rounded-lg transition-colors duration-300 font-medium" onclick="toggleMobileMenu()">Our Process</a>
+            <a href="#testimonials" class="block py-2 px-4 text-gray-800 hover:bg-gray-100 rounded-lg transition-colors duration-300 font-medium" onclick="toggleMobileMenu()">Testimonials</a>
+            <a href="#contact" class="block mt-2 py-2 px-4 text-center text-white bg-blue-600 rounded-lg hover:bg-blue-700 transition-colors duration-300" onclick="toggleMobileMenu()">Contact Us</a>
+        </div>
+    </nav>
+
+    <main>
+        <!-- Hero Section -->
+        <header class="hero-section text-center">
+            <div class="container mx-auto px-4 fade-in">
+                <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-tight tracking-wide mb-4">
+                    Connecting Talent with Opportunity
+                </h1>
+                <p class="text-lg sm:text-xl text-gray-300 max-w-3xl mx-auto mb-8">
+                    We specialize in strategic recruitment, helping businesses find exceptional talent and professionals find their next career move.
+                </p>
+                <a href="#contact" class="inline-block bg-blue-600 text-white font-semibold py-3 px-8 rounded-full shadow-lg hover:bg-blue-700 transition-all duration-300 ease-in-out transform hover:scale-105 hover:shadow-xl">
+                    Start Your Search
+                </a>
+            </div>
+        </header>
+
+        <!-- Services Section - UPDATED CONTENT -->
+        <section id="services" class="py-20 bg-gray-100">
+            <div class="container mx-auto px-4 fade-in">
+                <h2 class="text-3xl sm:text-4xl font-bold text-center mb-6">Our Comprehensive Services</h2>
+                <p class="text-center text-gray-600 mb-12 max-w-2xl mx-auto">
+                    We offer a full suite of HR and recruitment solutions designed to meet the unique needs of businesses of all sizes.
+                </p>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
+                    <!-- Recruitment & Talent Acquisition -->
+                    <div class="bg-white p-8 rounded-xl shadow-lg card-hover-effect">
+                        <div class="flex items-center space-x-4 mb-4">
+                            <i data-lucide="briefcase" class="w-10 h-10 text-blue-600"></i>
+                            <h3 class="text-2xl font-bold text-gray-900">Recruitment & Talent Acquisition</h3>
+                        </div>
+                        <p class="text-gray-600 mb-4">Finding the right people is key to your success. We handle the entire process, from sourcing to placement.</p>
+                        <ul class="space-y-3 text-gray-700">
+                            <li class="flex items-center list-item-hover-effect"><i data-lucide="chevron-right" class="w-5 h-5 text-blue-500 mr-2"></i>Executive Search & Headhunting</li>
+                            <li class="flex items-center list-item-hover-effect"><i data-lucide="chevron-right" class="w-5 h-5 text-blue-500 mr-2"></i>Mass Recruitment for SMEs and Corporates</li>
+                            <li class="flex items-center list-item-hover-effect"><i data-lucide="chevron-right" class="w-5 h-5 text-blue-500 mr-2"></i>Temporary & Contract Staffing Solutions</li>
+                            <li class="flex items-center list-item-hover-effect"><i data-lucide="chevron-right" class="w-5 h-5 text-blue-500 mr-2"></i>Outsourced Recruitment Services (RPO)</li>
+                            <li class="flex items-center list-item-hover-effect"><i data-lucide="chevron-right" class="w-5 h-5 text-blue-500 mr-2"></i>Internship & Graduate Trainee Placement Programs</li>
+                        </ul>
+                    </div>
+
+                    <!-- HR Consulting & Advisory -->
+                    <div class="bg-white p-8 rounded-xl shadow-lg card-hover-effect">
+                        <div class="flex items-center space-x-4 mb-4">
+                            <i data-lucide="user-check" class="w-10 h-10 text-blue-600"></i>
+                            <h3 class="text-2xl font-bold text-gray-900">HR Consulting & Advisory</h3>
+                        </div>
+                        <p class="text-gray-600 mb-4">Our expert advice helps you build a strong, compliant, and efficient HR foundation.</p>
+                        <ul class="space-y-3 text-gray-700">
+                            <li class="flex items-center list-item-hover-effect"><i data-lucide="chevron-right" class="w-5 h-5 text-blue-500 mr-2"></i>HR Department Setup for Startups & SMEs</li>
+                            <li class="flex items-center list-item-hover-effect"><i data-lucide="chevron-right" class="w-5 h-5 text-blue-500 mr-2"></i>HR Policy & Employee Handbook Development</li>
+                            <li class="flex items-center list-item-hover-effect"><i data-lucide="chevron-right" class="w-5 h-5 text-blue-500 mr-2"></i>HR Audits & Compliance Checks</li>
+                            <li class="flex items-center list-item-hover-effect"><i data-lucide="chevron-right" class="w-5 h-5 text-blue-500 mr-2"></i>Organizational Restructuring & Change Management</li>
+                            <li class="flex items-center list-item-hover-effect"><i data-lucide="chevron-right" class="w-5 h-5 text-blue-500 mr-2"></i>HR Technology Advisory (HRIS/Payroll Systems)</li>
+                        </ul>
+                    </div>
+
+                    <!-- Training & Development -->
+                    <div class="bg-white p-8 rounded-xl shadow-lg card-hover-effect">
+                        <div class="flex items-center space-x-4 mb-4">
+                            <i data-lucide="book-open" class="w-10 h-10 text-blue-600"></i>
+                            <h3 class="text-2xl font-bold text-gray-900">Training & Development</h3>
+                        </div>
+                        <p class="text-gray-600 mb-4">We empower your team with the skills and knowledge needed to excel in today's dynamic workplace.</p>
+                        <ul class="space-y-3 text-gray-700">
+                            <li class="flex items-center list-item-hover-effect"><i data-lucide="chevron-right" class="w-5 h-5 text-blue-500 mr-2"></i>Soft Skills Training</li>
+                            <li class="flex items-center list-item-hover-effect"><i data-lucide="chevron-right" class="w-5 h-5 text-blue-500 mr-2"></i>Leadership & Management Development Programs</li>
+                            <li class="flex items-center list-item-hover-effect"><i data-lucide="chevron-right" class="w-5 h-5 text-blue-500 mr-2"></i>Workplace Etiquette & Customer Service Training</li>
+                            <li class="flex items-center list-item-hover-effect"><i data-lucide="chevron-right" class="w-5 h-5 text-blue-500 mr-2"></i>Employee Onboarding & Induction Programs</li>
+                            <li class="flex items-center list-item-hover-effect"><i data-lucide="chevron-right" class="w-5 h-5 text-blue-500 mr-2"></i>Train-the-Trainer Programs</li>
+                        </ul>
+                    </div>
+
+                    <!-- Performance & People Management -->
+                    <div class="bg-white p-8 rounded-xl shadow-lg card-hover-effect">
+                        <div class="flex items-center space-x-4 mb-4">
+                            <i data-lucide="trending-up" class="w-10 h-10 text-blue-600"></i>
+                            <h3 class="text-2xl font-bold text-gray-900">Performance & People Management</h3>
+                        </div>
+                        <p class="text-gray-600 mb-4">Drive productivity and employee satisfaction with our data-driven performance management strategies.</p>
+                        <ul class="space-y-3 text-gray-700">
+                            <li class="flex items-center list-item-hover-effect"><i data-lucide="chevron-right" class="w-5 h-5 text-blue-500 mr-2"></i>Performance Management System Setup & Reviews</li>
+                            <li class="flex items-center list-item-hover-effect"><i data-lucide="chevron-right" class="w-5 h-5 text-blue-500 mr-2"></i>KPI Design & Implementation</li>
+                            <li class="flex items-center list-item-hover-effect"><i data-lucide="chevron-right" class="w-5 h-5 text-blue-500 mr-2"></i>Employee Engagement & Satisfaction Surveys</li>
+                            <li class="flex items-center list-item-hover-effect"><i data-lucide="chevron-right" class="w-5 h-5 text-blue-500 mr-2"></i>Career Pathing & Succession Planning</li>
+                            <li class="flex items-center list-item-hover-effect"><i data-lucide="chevron-right" class="w-5 h-5 text-blue-500 mr-2"></i>Conflict Resolution & Disciplinary Advisory</li>
+                        </ul>
+                    </div>
+
+                    <!-- Payroll & Outsourcing Services -->
+                    <div class="bg-white p-8 rounded-xl shadow-lg card-hover-effect">
+                        <div class="flex items-center space-x-4 mb-4">
+                            <i data-lucide="dollar-sign" class="w-10 h-10 text-blue-600"></i>
+                            <h3 class="text-2xl font-bold text-gray-900">Payroll & Outsourcing Services</h3>
+                        </div>
+                        <p class="text-gray-600 mb-4">We handle the administrative burden of HR, so you can focus on growing your business.</p>
+                        <ul class="space-y-3 text-gray-700">
+                            <li class="flex items-center list-item-hover-effect"><i data-lucide="chevron-right" class="w-5 h-5 text-blue-500 mr-2"></i>Payroll Processing & Compliance (PAYE, Pension, etc.)</li>
+                            <li class="flex items-center list-item-hover-effect"><i data-lucide="chevron-right" class="w-5 h-5 text-blue-500 mr-2"></i>Employee Benefits Administration</li>
+                            <li class="flex items-center list-item-hover-effect"><i data-lucide="chevron-right" class="w-5 h-5 text-blue-500 mr-2"></i>Full HR Outsourcing</li>
+                            <li class="flex items-center list-item-hover-effect"><i data-lucide="chevron-right" class="w-5 h-5 text-blue-500 mr-2"></i>Staff Verification & Background Checks</li>
+                        </ul>
+                    </div>
+                    
+                    <!-- Business Support Services -->
+                    <div class="bg-white p-8 rounded-xl shadow-lg card-hover-effect">
+                        <div class="flex items-center space-x-4 mb-4">
+                            <i data-lucide="tool" class="w-10 h-10 text-blue-600"></i>
+                            <h3 class="text-2xl font-bold text-gray-900">Business Support Services</h3>
+                        </div>
+                        <p class="text-gray-600 mb-4">Get the foundational support you need to run your business smoothly and efficiently.</p>
+                        <ul class="space-y-3 text-gray-700">
+                            <li class="flex items-center list-item-hover-effect"><i data-lucide="chevron-right" class="w-5 h-5 text-blue-500 mr-2"></i>Job Description Development & Review</li>
+                            <li class="flex items-center list-item-hover-effect"><i data-lucide="chevron-right" class="w-5 h-5 text-blue-500 mr-2"></i>Organizational Structure & Chart Design</li>
+                            <li class="flex items-center list-item-hover-effect"><i data-lucide="chevron-right" class="w-5 h-5 text-blue-500 mr-2"></i>HR Data Analytics & Reporting</li>
+                            <li class="flex items-center list-item-hover-effect"><i data-lucide="chevron-right" class="w-5 h-5 text-blue-500 mr-2"></i>Virtual HR Services for Remote Companies</li>
+                            <li class="flex items-center list-item-hover-effect"><i data-lucide="chevron-right" class="w-5 h-5 text-blue-500 mr-2"></i>Support with Labour Law Compliance</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Recruitconnect Signature Services -->
+                <div class="bg-white p-8 rounded-xl shadow-lg mt-12 border-4 border-dashed border-blue-300">
+                    <div class="flex items-center space-x-4 mb-6">
+                        <i data-lucide="star" class="w-10 h-10 text-yellow-500"></i>
+                        <h3 class="text-2xl font-bold text-gray-900">Recruitconnect Signature Services</h3>
+                    </div>
+                    <ul class="space-y-3 text-gray-700">
+                        <li class="flex items-center list-item-hover-effect"><i data-lucide="chevron-right" class="w-5 h-5 text-blue-500 mr-2"></i><strong>“RecruitReady”</strong> – CV & Interview Preparation Coaching for Job Seekers</li>
+                        <li class="flex items-center list-item-hover-effect"><i data-lucide="chevron-right" class="w-5 h-5 text-blue-500 mr-2"></i><strong>“ConnectPro”</strong> – Business HR subscription packages for small businesses</li>
+                        <li class="flex items-center list-item-hover-effect"><i data-lucide="chevron-right" class="w-5 h-5 text-blue-500 mr-2"></i><strong>“HireFast”</strong> – 48-hour recruitment turnaround for urgent roles</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        <!-- End of Services Section -->
+
+        <!-- Process Section -->
+        <section id="process" class="py-20 bg-white">
+            <div class="container mx-auto px-4 fade-in">
+                <h2 class="text-3xl sm:text-4xl font-bold text-center mb-12">Our Streamlined Process</h2>
+                <div class="grid grid-cols-1 lg:grid-cols-4 gap-8">
+                    <!-- Step 1 -->
+                    <div class="flex flex-col items-center text-center p-6 bg-gray-50 rounded-xl shadow-lg card-hover-effect">
+                        <div class="relative w-16 h-16 flex items-center justify-center bg-blue-600 text-white rounded-full mb-4">
+                            <span class="text-2xl font-bold">1</span>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-2">Discovery & Consultation</h3>
+                        <p class="text-gray-600">We work closely with you to understand your needs, company culture, and the specific role requirements.</p>
+                    </div>
+                    <!-- Step 2 -->
+                    <div class="flex flex-col items-center text-center p-6 bg-gray-50 rounded-xl shadow-lg card-hover-effect">
+                        <div class="relative w-16 h-16 flex items-center justify-center bg-blue-600 text-white rounded-full mb-4">
+                            <span class="text-2xl font-bold">2</span>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-2">Sourcing & Screening</h3>
+                        <p class="text-gray-600">Our team leverages a vast network to find and vet the most qualified candidates for your position.</p>
+                    </div>
+                    <!-- Step 3 -->
+                    <div class="flex flex-col items-center text-center p-6 bg-gray-50 rounded-xl shadow-lg card-hover-effect">
+                        <div class="relative w-16 h-16 flex items-center justify-center bg-blue-600 text-white rounded-full mb-4">
+                            <span class="text-2xl font-bold">3</span>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-2">Interview & Placement</h3>
+                        <p class="text-gray-600">We manage the interview process, facilitate the offer, and ensure a smooth transition for the new hire.</p>
+                    </div>
+                    <!-- Step 4 -->
+                    <div class="flex flex-col items-center text-center p-6 bg-gray-50 rounded-xl shadow-lg card-hover-effect">
+                        <div class="relative w-16 h-16 flex items-center justify-center bg-blue-600 text-white rounded-full mb-4">
+                            <span class="text-2xl font-bold">4</span>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-2">Follow-up & Support</h3>
+                        <p class="text-gray-600">We provide ongoing support to ensure the placement is successful and both parties are satisfied.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials Section -->
+        <section id="testimonials" class="py-20 bg-gray-100">
+            <div class="container mx-auto px-4 fade-in">
+                <h2 class="text-3xl sm:text-4xl font-bold text-center mb-12">What Our Clients Say</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <!-- Testimonial 1 -->
+                    <div class="bg-white p-8 rounded-xl shadow-lg card-hover-effect">
+                        <p class="text-gray-700 italic mb-4">
+                            "Global Talent Connect completely transformed our hiring process. They found us the perfect candidate in record time, and their professionalism was unmatched. Highly recommended!"
+                        </p>
+                        <div class="flex items-center">
+                            <img src="https://placehold.co/60x60/e5e7eb/6b7280?text=JR" alt="Client Testimonial" class="w-12 h-12 rounded-full mr-4">
+                            <div>
+                                <p class="font-bold text-gray-900">Jane Rodriguez</p>
+                                <p class="text-gray-500">Hiring Manager, Tech Solutions Co.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Testimonial 2 -->
+                    <div class="bg-white p-8 rounded-xl shadow-lg card-hover-effect">
+                        <p class="text-gray-700 italic mb-4">
+                            "The team at Global Talent Connect helped me land my dream job. They provided excellent guidance throughout the process and were always there to answer my questions. A fantastic experience!"
+                        </p>
+                        <div class="flex items-center">
+                            <img src="https://placehold.co/60x60/e5e7eb/6b7280?text=SM" alt="Candidate Testimonial" class="w-12 h-12 rounded-full mr-4">
+                            <div>
+                                <p class="font-bold text-gray-900">Samuel Miller</p>
+                                <p class="text-gray-500">Placed Candidate</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="py-20 bg-white">
+            <div class="container mx-auto px-4 fade-in">
+                <h2 class="text-3xl sm:text-4xl font-bold text-center mb-12">Let's Find Your Next Hire</h2>
+                <div class="bg-gray-50 p-8 md:p-12 rounded-2xl shadow-xl max-w-4xl mx-auto">
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                        <!-- Contact Form -->
+                        <div class="lg:pr-8">
+                            <form action="#" method="POST" class="space-y-6">
+                                <div>
+                                    <label for="name" class="block text-sm font-medium text-gray-700">Full Name</label>
+                                    <input type="text" id="name" name="name" class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500 transition-colors">
+                                </div>
+                                <div>
+                                    <label for="email" class="block text-sm font-medium text-gray-700">Email Address</label>
+                                    <input type="email" id="email" name="email" class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500 transition-colors">
+                                </div>
+                                <div>
+                                    <label for="message" class="block text-sm font-medium text-gray-700">Message</label>
+                                    <textarea id="message" name="message" rows="4" class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500 transition-colors"></textarea>
+                                </div>
+                                <button type="submit" class="w-full bg-blue-600 text-white font-semibold py-3 px-4 rounded-lg shadow-md hover:bg-blue-700 transition duration-300 ease-in-out">
+                                    Send Message
+                                </button>
+                            </form>
+                        </div>
+                        
+                        <!-- Contact Info -->
+                        <div class="flex flex-col justify-center">
+                            <div class="space-y-6 text-gray-600">
+                                <div class="flex items-start">
+                                    <i data-lucide="map-pin" class="text-blue-600 w-6 h-6 flex-shrink-0 mt-1"></i>
+                                    <span class="ml-3">123 Talent Avenue, Suite 100, Recruitment City, RC 56789</span>
+                                </div>
+                                <div class="flex items-start">
+                                    <i data-lucide="phone" class="text-blue-600 w-6 h-6 flex-shrink-0 mt-1"></i>
+                                    <span class="ml-3">+1 (555) 123-4567</span>
+                                </div>
+                                <div class="flex items-start">
+                                    <i data-lucide="mail" class="text-blue-600 w-6 h-6 flex-shrink-0 mt-1"></i>
+                                    <span class="ml-3">info@globaltalentconnect.com</span>
+                                </div>
+                                <div class="flex items-start">
+                                    <i data-lucide="linkedin" class="text-blue-600 w-6 h-6 flex-shrink-0 mt-1"></i>
+                                    <span class="ml-3">linkedin.com/in/globaltalentconnect</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-gray-300 py-12">
+        <div class="container mx-auto px-4 text-center">
+            <p>&copy; 2025 Global Talent Connect. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript for mobile menu and scroll animations -->
+    <script>
+        // Initialize Lucide icons on window load
+        window.addEventListener('load', () => {
+            if (typeof lucide !== 'undefined') {
+                lucide.createIcons();
+            }
+        });
+
+        // Function to toggle mobile menu visibility
+        const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menuIcon = document.getElementById('menu-icon');
+        const closeIcon = document.getElementById('close-icon');
+
+        function toggleMobileMenu() {
+            mobileMenu.classList.toggle('hidden');
+            menuIcon.classList.toggle('hidden');
+            closeIcon.classList.toggle('hidden');
+        }
+
+        mobileMenuToggle.addEventListener('click', toggleMobileMenu);
+
+        // Scroll animation logic
+        document.addEventListener("DOMContentLoaded", function() {
+            const faders = document.querySelectorAll(".fade-in");
+            const appearOptions = {
+                threshold: 0.2, // Trigger when 20% of the element is visible
+                rootMargin: "0px 0px -50px 0px" // Adjust the trigger point
+            };
+
+            const appearOnScroll = new IntersectionObserver(function(
+                entries,
+                appearOnScroll
+            ) {
+                entries.forEach(entry => {
+                    if (!entry.isIntersecting) {
+                        return;
+                    } else {
+                        entry.target.classList.add("is-visible");
+                        appearOnScroll.unobserve(entry.target);
+                    }
+                });
+            }, appearOptions);
+
+            faders.forEach(fader => {
+                appearOnScroll.observe(fader);
+            });
+        });
+    </script>
+</body>
+</html>
